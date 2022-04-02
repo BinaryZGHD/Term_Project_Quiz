@@ -3,10 +3,10 @@
 <div class="row">
 	<div class="col-lg-12 margin-tb">
 		<div class="pull-left">
-			<h2>Show TeacherTeach</h2>
+			<h2>Show TeacherTeach | | <a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
             <div class="card-header">
 				<a class="btn btn-primary" 
-                    href="{{ route('teacherteach.create') }}">Insert</a>
+                    href="{{ route('teacher_teach.create') }}">Insert</a>
     		</div>
 	</div>
 </div>
@@ -18,18 +18,18 @@
 				<td align ="center" >Choice_id</td>
 				<td align ="center" >Choice_number</td>
 				<td align ="center" >Choice_description</td>
-				<td align ="center" colspan=2>Operrations</td>
+				<td align ="center" colspan=2>Operations</td>
 			</tr>
-			@foreach($teacherteach as $TEAT)
+			@foreach($teacherteach as $teat)
 			<tr>
-				<td align ="center">{{ $TEAT->tt_year }}</td>
-				<td align ="center" >{{ $TEAT->tt_term }}</td>
-				<td align ="center">{{ $TEAT->tt_crs_code }}</td>
-				<td align ="center" >{{ $TEAT->tt_sect }}</td>
-				<td align ="center">{{ $TEAT->tt_tch_code }}</td>
+				<td align ="center">{{ $teat->tt_year }}</td>
+				<td align ="center" >{{ $teat->tt_term }}</td>
+				<td align ="center">{{ $teat->tt_crs_code }}</td>
+				<td align ="center" >{{ $teat->tt_sect }}</td>
+				<td align ="center">{{ $teat->tt_tch_code }}</td>
 				<td align ="center" >
-					<form action="{{ route('teacherteach.destroy',$TEAT->tt_crs_code) }}" method="POST" >
-						<a class="btn btn-primary" href="{{ route('choice.edit',$TEAT->tt_crs_code) }}"> Edit</a>
+					<form action="{{ route('teacher_teach.destroy',$teat->tt_crs_code) }}" method="POST" >
+						<a class="btn btn-primary" href="{{ route('teacher_teach.edit',$teat->tt_crs_code) }}"> Edit</a>
 						@csrf
 						@method('DELETE')
 						<button type="submit" class="btn btn-danger">Delete </button>

@@ -3,11 +3,8 @@
 <div class="row">
 	<div class="col-lg-12 margin-tb">
 		<div class="pull-left">
-			<h2>Show Employee</h2>
-            <div class="card-header">
-				<a class="btn btn-primary" 
-                    href="{{ route('employee.create') }}">Insert</a>
-    		</div>
+			<h2>Quiz3 | |<a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
+			
 	</div>
 </div>
 
@@ -15,28 +12,22 @@
 	<div class="col-lg-12 margin-tb">
         <table class="table table-bordered">
 			<tr>
-				<td align ="center" >Emp_ID</td>
-				<td align ="center" >Emp_Name</td>
-				<td align ="center" >Emp_LName</td>
-				<td align ="center" >Job</td>
-				<td align ="center" >Chg_Hour</td>
-				<td colspan=2>Operrations</td>
+				<td align ="center" >Question_id</td>
+				<!-- <td align ="center" >Question</td> -->
+				<td align ="center" >Time</td>
+                <td align ="center" >Score</td>
+				<td align ="center" colspan=2>Operations</td>
 			</tr>
-			@foreach($employee as $emp)
+			@foreach($quiz3 as $qu)
 			<tr>
-				<td align ="center">{{ $emp->emp_id }}</td>
-				<td >{{ $emp->emp_name }}</td>
-				<td >{{ $emp->emp_lname }}</td>
-				<td align ="center">{{ $emp->job }}</td>
-				<td align ="center">{{ $emp->chg_hour }}</td>
-				<td>
-					<form action="{{ route('employee.destroy',$emp->emp_id) }}" method="POST" >
-						<a class="btn btn-primary" href="{{ route('employee.edit',$emp->emp_id) }}"> Edit</a>
+				<td align ="center">{{ $qu->qs_id }}</td>
+				<td align ="center">{{ $qs->qs_question }}</td><br>
+				<!-- <td align ="center" >{{ $qu->qs_question }}</td> -->
+                <td align ="center">{{ $qu->qs_ex_time }}</td>
+				<td align ="center" >{{ $qu->qs_score }}</td>
+				<td align ="center" >
+                <a class="btn btn-primary" href="{{ route('elle.create',$qu->qs_id) }}">เริ่มทำข้อสอบ</a>
 						@csrf
-						@method('DELETE')
-						<button type="submit" class="btn btn-danger">Delete </button>
-
-					</form>
 				</td>
 			</tr>
 			@endforeach

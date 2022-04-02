@@ -13,7 +13,7 @@ class ClassCheckStudentController extends Controller
      */
     public function index()
     {
-        $classcheckstudent = ClassCheckStudentModel :: latest()->get();
+        $classcheckstudent = DB::table('class_check_student')->get();
 
         return view('classcheckstudent.index',compact('classcheckstudent'));
     }
@@ -49,7 +49,7 @@ class ClassCheckStudentController extends Controller
         ]
         );
 
-        return redirect('classcheckstudent');
+        return redirect('class_check_student');
     }
 
     /**
@@ -98,7 +98,7 @@ class ClassCheckStudentController extends Controller
         ]
         );
 
-        return redirect('classcheckstudent');
+        return redirect('class_check_student');
     }
 
     /**
@@ -114,6 +114,6 @@ class ClassCheckStudentController extends Controller
         ->where('ccs_std_code','=',$id)
         ->delete();
         
-        return redirect('classcheckstudent');
+        return redirect('class_check_student');
     }
 }

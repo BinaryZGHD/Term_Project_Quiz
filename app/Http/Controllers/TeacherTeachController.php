@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
-use App\Models\TeacherTeachModel;
+// use App\Models\TeacherTeachModel;
 
 class TeacherTeachController extends Controller
 {
@@ -14,7 +14,7 @@ class TeacherTeachController extends Controller
      */
     public function index()
     {
-        $teacherteach = TeacherTeachModel :: latest()->get();
+        $teacherteach =  DB::table('teacher_teach')->get();
 
         return view('teacherteach.index',compact('teacherteach'));
     }
@@ -26,7 +26,7 @@ class TeacherTeachController extends Controller
      */
     public function create()
     {
-        //
+        return view('teacherteach.create');
     }
 
     /**
@@ -37,7 +37,25 @@ class TeacherTeachController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tt_year'=>'required',
+            'tt_term'=>'required',
+            'tt_crs_code'=>'required',
+            'tt_sect'=>'required',
+            'tt_tch_code'=>'required'
+        ]);
+
+        DB::table('teacher_teach')->insert(
+        [
+            'tt_year' => $request->tt_year, 
+            'tt_term' => $request->tt_term,
+            'tt_crs_code'=> $request->tt_crs_code,
+            'tt_sect' => $request->tt_sect,
+            'tt_tch_code'=> $request->tt_tch_code
+        ]
+        );
+
+        return redirect('teacher_teach');
     }
 
     /**
@@ -59,7 +77,10 @@ class TeacherTeachController extends Controller
      */
     public function edit($id)
     {
-        //
+       
+        $teacherteach = DB::table('teacher_teach')->where('tt_crs_code','=',$id)->get ();
+        return view('teacherteach.edit', compact('teacherteach'));
+        
     }
 
     /**
@@ -71,7 +92,24 @@ class TeacherTeachController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'tt_year'=>'required',
+            'tt_term'=>'required',
+            'tt_crs_code'=>'required',
+            'tt_sect'=>'required',
+            'tt_tch_code'=>'required'
+        ]);
+
+        DB::table('teacher_teach')->where('tt_crs_code','=',$id)->update([
+            'tt_year' => $request->tt_year,
+            'tt_term' => $request->tt_term,
+            'tt_crs_code'=> $request->tt_crs_code,
+            'tt_sect' => $request->tt_sect,
+            'tt_tch_code'=> $request->tt_tch_code
+        ]
+        );
+
+        return redirect('teacher_teach');
     }
 
     /**
@@ -82,6 +120,10 @@ class TeacherTeachController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('teacher_teach')
+        ->where('tt_crs_code','=',$id)
+        ->delete();
+        
+        return redirect('teacher_teach');
     }
 }

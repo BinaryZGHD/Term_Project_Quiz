@@ -3,10 +3,10 @@
 <div class="row">
 	<div class="col-lg-12 margin-tb">
 		<div class="pull-left">
-			<h2>Show Choice</h2>
+			<h2>Show Class Check  | | <a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
             <div class="card-header">
 				<a class="btn btn-primary" 
-                    href="{{ route('classcheck.create') }}">Insert</a>
+                    href="{{ route('class_check.create') }}">Insert</a>
     		</div>
 	</div>
 </div>
@@ -44,8 +44,8 @@
 
 
 				<td align ="center" >
-					<form action="{{ route('classcheck.destroy',$clak->cc_id) }}" method="POST" >
-						<a class="btn btn-primary" href="{{ route('classcheck.edit',$clak->cc_id) }}"> Edit</a>
+					<form action="{{ route('class_check.destroy',$clak->cc_id) }}" method="POST" >
+						<a class="btn btn-primary" href="{{ route('class_check.edit',$clak->cc_id) }}"> Edit</a>
 						@csrf
 						@method('DELETE')
 						<button type="submit" class="btn btn-danger">Delete </button>

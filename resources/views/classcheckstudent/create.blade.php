@@ -4,15 +4,15 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add ClassCheckStudent</h2>
+            <h2>Add classcheckstudent</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('classcheckstudent.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('class_check_student.index') }}"> Back</a>
         </div>
     </div>
 </div>
    
-<form action="{{ route('classcheckstudent.store') }}" method="POST">
+<form action="{{ route('class_check_student.store') }}" method="POST">
 
     @csrf
     <div class="row">

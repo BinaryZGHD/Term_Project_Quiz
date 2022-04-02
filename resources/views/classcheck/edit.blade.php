@@ -7,7 +7,7 @@
             <h2>Edit classcheck</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('classcheck.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('class_check.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@
 @foreach($classcheck  as $clck)
 @endforeach
 
-<form action="{{ route('classcheck.update', $clck->cc_id) }}" method="POST">
+<form action="{{ route('class_check.update', $clck->cc_id) }}" method="POST">
 
     @csrf
     @method("PUT")

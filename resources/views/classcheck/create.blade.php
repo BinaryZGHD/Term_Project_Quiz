@@ -7,12 +7,12 @@
             <h2>Add classcheck</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('classcheck.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('class_check.index') }}"> Back</a>
         </div>
     </div>
 </div>
    
-<form action="{{ route('classcheck.store') }}" method="POST">
+<form action="{{ route('class_check.store') }}" method="POST">
 
     @csrf
     <div class="row">

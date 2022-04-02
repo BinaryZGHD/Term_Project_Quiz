@@ -13,8 +13,7 @@ class ClassCheckController extends Controller
      */
     public function index()
     {
-        $classcheck = ClassCheckModel :: latest()->get();
-
+        $classcheck = DB::table('class_check')->get();
         return view('classcheck.index',compact('classcheck'));
     }
 
@@ -61,7 +60,7 @@ class ClassCheckController extends Controller
         ]
         );
 
-        return redirect('classcheck');
+        return redirect('class_check');
     }
 
     /**
@@ -122,7 +121,7 @@ class ClassCheckController extends Controller
         ]
         );
 
-        return redirect('classcheck');
+        return redirect('class_check');
     }
     /**
      * Remove the specified resource from storage.
@@ -134,6 +133,6 @@ class ClassCheckController extends Controller
     {
         DB::table('class_check')->where('cc_id','=',$id)->delete();
         
-        return redirect('classcheck');
+        return redirect('class_check');
     }
 }

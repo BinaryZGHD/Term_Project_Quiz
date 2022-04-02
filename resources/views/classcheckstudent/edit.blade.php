@@ -7,7 +7,7 @@
             <h2>Edit ClassCheckStudent</h2>
         </div>
         <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('classcheckstudent.index') }}"> Back</a>
+            <a class="btn btn-primary" href="{{ route('class_check_student.index') }}"> Back</a>
         </div>
     </div>
 </div>
@@ -15,7 +15,7 @@
 @foreach($classcheckstudent as $claks)
 @endforeach
 
-<form action="{{ route('classcheckstudent.update', $claks->ccs_cc_id) }}" method="POST">
+<form action="{{ route('class_check_student.update', $claks->ccs_cc_id) }}" method="POST">
 
     @csrf
     @method("PUT")

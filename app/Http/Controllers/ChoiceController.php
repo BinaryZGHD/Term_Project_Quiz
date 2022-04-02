@@ -14,7 +14,7 @@ class ChoiceController extends Controller
      */
     public function index()
     {
-        $choice = ChoiceModel :: latest()->get();
+        $choice = DB::table('choice')->get();
 
         return view('choice.index',compact('choice'));
     }
