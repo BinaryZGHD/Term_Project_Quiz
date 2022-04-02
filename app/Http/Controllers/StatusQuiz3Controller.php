@@ -12,11 +12,38 @@ class StatusQuiz3Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    // SELECT c.ch_desc
+    // FROM 
+    // `question` AS q 
+    // JOIN choice  as c ON c.ch_qs_id = q.qs_id
+    // WHERE  qs_id = 1
     public function index()
     {
-        $quiz3 = DB::table('question')->get();
+        $quiz3 = DB::table('question')->get(); 
+        $quiz32 = DB::table("question")
+        // ->where('ch_qs_id',$quiz31->qs_id)
+            //  ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
+                    // ->leftJoin('Products','choice.ProdNo','=','Products.ProdNo')
+                    // ->get();
+      
+                    // $pretests =  DB::table('question')
+                    ->select('choice.ch_desc' , 'question.qs_question','question.qs_id')
+                    ->Join('choice','choice.ch_qs_id','=','question.qs_id') 
+                    ->where('question.qs_id',2  )
+                    
+        
+        // ->groupBy("question.qs_question")
+        // ->where('ch_qs_id',$quiz31->qs_id)
+                 
+                    // ->leftJoin('Products','choice.ProdNo','=','Products.ProdNo')
+                    ->get();
 
-        return view('elle.index',compact('quiz3'));
+
+       
+                
+        return view('elle.index2',compact('quiz3','quiz32'));
     }
 
     /**
@@ -28,6 +55,8 @@ class StatusQuiz3Controller extends Controller
     {
         $question = DB::table('question')->get ();
         $choice = DB::table('choice')->get ();
+        
+        
         return view('elle.create',compact('question','choice'));
     }
 
@@ -74,7 +103,53 @@ class StatusQuiz3Controller extends Controller
      */
     public function show($id)
     {
-        //
+         // SELECT c.ch_desc
+    // FROM 
+    // `question` AS q 
+    // JOIN choice  as c ON c.ch_qs_id = q.qs_id
+    // WHERE  qs_id = 1
+        $quiz3 = DB::table('choice')
+       
+        // ->where('choice.ch_qs_id','=',$id)
+        ->get(); 
+        $quiz32 = DB::table("question")
+        ->select('choice.ch_desc' , 'question.qs_question')
+        
+        ->where('question.qs_id','=',$id  )
+        // ->where('ch_qs_id',$quiz31->qs_id)
+                 ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
+                    // ->leftJoin('Products','choice.ProdNo','=','Products.ProdNo')
+                    ->get();
+      
+        $quizchoice1 = DB::table("question")
+                    ->select('choice.ch_desc' , 'question.qs_question')
+                    ->where('question.qs_id','=',$id  )
+                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
+                    ->get();  
+    
+    
+        $quizchoice2= DB::table("question")
+                    ->select('choice.ch_desc' , 'question.qs_question')
+                    ->where('question.qs_id','=',$id  )
+                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
+                    ->get();  
+                    
+         $quizchoice3 = DB::table("question")
+                    ->select('choice.ch_desc' , 'question.qs_question')
+                    ->where('question.qs_id','=',$id  )
+                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
+                    ->get();  
+    
+    
+        $quizchoice4= DB::table("question")
+                  ->select('choice.ch_desc' , 'question.qs_question')
+                    ->where('question.qs_id','=',$id  )
+                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
+                    ->get();  
+                                   
+    
+                    
+        return view('elle.show',compact('quiz3','quiz32','quizchoice1','quizchoice2','quizchoice3','quizchoice4'));         
     }
 
     /**
@@ -86,8 +161,8 @@ class StatusQuiz3Controller extends Controller
     public function edit($id)
     {
        
-        // $quiz3 = DB::table('choice')->where('ch_qs_id','=',$id)->get ();
-        // return view('quiz3.edit', compact('quiz3'));
+        $quiz3 = DB::table('choice')->where('ch_qs_id','=',$id)->get ();
+        return view('elle.edit', compact('quiz3'));
         
     }
 

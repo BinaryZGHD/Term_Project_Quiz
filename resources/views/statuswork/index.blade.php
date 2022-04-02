@@ -1,5 +1,26 @@
 @extends('layout')
 @section('content')
+
+<style>
+body {background-color: #CCCCFF;}
+h1   {color: blue;}
+h2    {color: #FFFFFF;}
+h3    {color: #FFFF00;}
+a     {color: #FF0000;}
+
+    table#t01 { width :100%; }
+    table#t01 td:nth-child(even) { background-color: #eee; }
+    table#t01 td:nth-child(odd) { background-color:#fff; }
+    /* table#t01 td1 { background-color: black;color: white; } */
+	/* tr:hover {background-color: coral;} */
+	td:hover {background-color: coral;}
+	table, th, td, tr {
+  border: 2px solid black;
+  border-collapse: collapse;
+  border-spacing: 2px;
+}
+</style>
+
 <div class="row">
 	<div class="col-lg-12 margin-tb">
 		<div class="pull-left">

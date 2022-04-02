@@ -37,7 +37,7 @@
 				<td align ="center" >{{ $eq->eq_score }}</td>
 
 				<td align ="center" >
-					<form action="{{ route('exam_question.destroy',$eq->eq_ex_id) }}" method="POST" >
+					<form action="{{ route('exam_question.destroy',['eq_ex_id'=>$eq->eq_ex_id,'eq_qs_id'=>$eq->eq_qs_id]) }}" method="POST" >
 						<a class="btn btn-primary" href="{{ route('exam_question.edit',$eq->eq_ex_id) }}"> Edit</a>
 						@csrf
 						@method('DELETE')
