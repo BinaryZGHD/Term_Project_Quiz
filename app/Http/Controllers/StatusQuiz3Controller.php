@@ -29,9 +29,9 @@ class StatusQuiz3Controller extends Controller
                     // ->get();
       
                     // $pretests =  DB::table('question')
-                    ->select('choice.ch_desc' , 'question.qs_question','question.qs_id')
+                    ->select('choice.ch_desc' ,'question.qs_question', 'question.qs_id')
                     ->Join('choice','choice.ch_qs_id','=','question.qs_id') 
-                    ->where('question.qs_id',2  )
+                    ->where('question.qs_id',2)
                     
         
         // ->groupBy("question.qs_question")
@@ -40,9 +40,6 @@ class StatusQuiz3Controller extends Controller
                     // ->leftJoin('Products','choice.ProdNo','=','Products.ProdNo')
                     ->get();
 
-
-       
-                
         return view('elle.index2',compact('quiz3','quiz32'));
     }
 
@@ -103,53 +100,19 @@ class StatusQuiz3Controller extends Controller
      */
     public function show($id)
     {
-         // SELECT c.ch_desc
-    // FROM 
-    // `question` AS q 
-    // JOIN choice  as c ON c.ch_qs_id = q.qs_id
-    // WHERE  qs_id = 1
         $quiz3 = DB::table('choice')
        
         // ->where('choice.ch_qs_id','=',$id)
         ->get(); 
-        $quiz32 = DB::table("question")
-        ->select('choice.ch_desc' , 'question.qs_question')
-        
-        ->where('question.qs_id','=',$id  )
-        // ->where('ch_qs_id',$quiz31->qs_id)
-                 ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
+        $quiz32 = DB::table("question")->where('question.qs_id','=',$id)
+                    // ->where('ch_qs_id',$quiz31->qs_id)
+                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
                     // ->leftJoin('Products','choice.ProdNo','=','Products.ProdNo')
                     ->get();
       
-        $quizchoice1 = DB::table("question")
-                    ->select('choice.ch_desc' , 'question.qs_question')
-                    ->where('question.qs_id','=',$id  )
-                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
-                    ->get();  
-    
-    
-        $quizchoice2= DB::table("question")
-                    ->select('choice.ch_desc' , 'question.qs_question')
-                    ->where('question.qs_id','=',$id  )
-                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
-                    ->get();  
+      
                     
-         $quizchoice3 = DB::table("question")
-                    ->select('choice.ch_desc' , 'question.qs_question')
-                    ->where('question.qs_id','=',$id  )
-                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
-                    ->get();  
-    
-    
-        $quizchoice4= DB::table("question")
-                  ->select('choice.ch_desc' , 'question.qs_question')
-                    ->where('question.qs_id','=',$id  )
-                    ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
-                    ->get();  
-                                   
-    
-                    
-        return view('elle.show',compact('quiz3','quiz32','quizchoice1','quizchoice2','quizchoice3','quizchoice4'));         
+        return view('elle.show',compact('quiz3','quiz32',));         
     }
 
     /**
