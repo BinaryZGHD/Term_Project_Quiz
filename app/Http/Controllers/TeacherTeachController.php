@@ -86,9 +86,9 @@ class TeacherTeachController extends Controller
     public function edit($id)
     {
        
-        $teacherteach = DB::table('teacher_teach')->where('tt_crs_code','=',$id)
+        $teacherteach = DB::table('teacher_teach')->where('tt_crs_code','=',$id)->get ();
                                                 //   ->where('tt_tch_code','=',$tt_tch_code)
-                                                  ->get ();
+                                                  
         return view('teacherteach.edit', compact('teacherteach'));
         
     }
@@ -110,9 +110,9 @@ class TeacherTeachController extends Controller
             'tt_tch_code'=>'required'
         ]);
 
-        DB::table('teacher_teach')->where('tt_crs_code','=',$id)
+        DB::table('teacher_teach')->where('tt_crs_code','=',$id)->update([
                                 //   ->where('tt_tch_code','=',$request->tt_tch_code)
-                                  ->update([
+                                  
             'tt_year' => $request->tt_year,
             'tt_term' => $request->tt_term,
             'tt_crs_code'=> $request->tt_crs_code,
@@ -134,7 +134,6 @@ class TeacherTeachController extends Controller
     {
         DB::table('teacher_teach')
         ->where('tt_crs_code','=',$id)
-        //->where('tt_tch_code','=',$tt_tch_code)
         ->delete();
         
         return redirect('teacher_teach');

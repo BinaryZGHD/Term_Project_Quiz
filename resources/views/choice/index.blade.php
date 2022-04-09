@@ -28,7 +28,7 @@
 				<td >{{ $cho->ch_desc }}</td>
 
 				<td align ="center" >
-					<form action="{{ route('choice.destroy',$cho->ch_qs_id) }}" method="POST" >
+					<form action="{{ route('choice.destroy',['ch_qs_id'=>$cho->ch_qs_id,'ch_no'=>$cho->ch_no]  ) }}" method="POST" >
 						<a class="btn btn-primary" href="{{ route('choice.edit',$cho->ch_qs_id) }}"> Edit</a>
 						@csrf
 						@method('DELETE')

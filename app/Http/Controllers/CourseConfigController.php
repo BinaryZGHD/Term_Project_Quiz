@@ -13,7 +13,10 @@ class CourseConfigController extends Controller
      */
     public function index()
     {
-        $course_config = DB::table('course_config')->get();
+        $course_config = DB::table('course_config')
+                        ->join('course','course_config.ccf_crs_code','=','course.crs_code')
+                        ->orderby('course_config.ccf_year','desc')
+                        ->get();
 
         return view('courseconfig.index',compact('course_config'));
     }
@@ -25,7 +28,11 @@ class CourseConfigController extends Controller
      */
     public function create()
     {
-        return view('courseconfig.create');
+        $course_config = DB::table('course_config')->get();
+        $course = DB::table('course')
+                    ->where('crs_Active', '=', 'Y')
+                    ->get();
+        return view('courseconfig.create',compact('course_config','course'));
     }
 
     /**
@@ -73,8 +80,15 @@ class CourseConfigController extends Controller
      */
     public function edit($id)
     {
-        $course_config = DB::table('course_config')->where('ccf_crs_code','=',$id)->get();
-        return view('courseconfig.edit',compact('course_config'));
+        $course_config = DB::table('course_config')
+                        ->join('course','course_config.ccf_crs_code','=','course.crs_code')
+                        ->orderby('course_config.ccf_year','desc')
+                        ->get();
+        $course = DB::table('course')
+                        ->where('crs_Active', '=', 'Y')
+                        ->get();
+        return view('courseconfig.edit',compact('course_config','course'));
+        
     }
 
     /**
@@ -108,9 +122,14 @@ class CourseConfigController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ccf_year,$ccf_term,$ccf_crs_code)
     {
-        DB::table('course_config')->where('ccf_crs_code','=',$id)->delete();
+        DB::table('course_config')
+                        ->where('ccf_year','=',$ccf_year)
+                        ->where('ccf_term','=',$ccf_term)
+                        ->where('ccf_crs_code','=',$ccf_crs_code)
+                        ->delete();
+
         return redirect('course_config');
     }
 }

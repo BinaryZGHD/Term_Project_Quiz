@@ -126,10 +126,10 @@ class EnrollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($enr_sect, $enr_seq)
+    public function destroy($enr_std_code, $enr_crs_code)
     {
-        DB::table('enroll')->where('enr_sect','=',$enr_sect)
-                            ->where('enr_seq','=',$enr_seq)
+        DB::table('enroll') ->where('enr_std_code','=',$enr_std_code)
+                            ->where('enr_crs_code','=',$enr_crs_code)
                             ->delete();
         
         return redirect('enroll');

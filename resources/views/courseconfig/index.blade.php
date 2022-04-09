@@ -15,20 +15,21 @@
 	<div class="col-lg-12 margin-tb">
         <table class="table table-bordered">
 			<tr>
-				<td align ="center">Course_Config_Year</td>
-				<td align ="center">Course_Config_Term</td>
-				<td align ="center">Course_Config_crs_Code</td>
-				<td align ="center">Course_Config_num_Exam</td>
+				<td align ="center">ปีการศึกษา</td>
+				<td align ="center">เทอม</td>
+				<td align ="center">รายวิชา</td>
+				<td align ="center">จำนวนการสอบ</td>
 				<td align ="center" colspan=2>Operations</td>
 			</tr>
 			@foreach($course_config as $ccf)
 			<tr>
 				<td align ="center">{{ $ccf->ccf_year }}</td>
 				<td align ="center">{{ $ccf->ccf_term }}</td>
-				<td align ="center">{{ $ccf->ccf_crs_code }}</td>
+				<td align ="center">{{ $ccf->crs_name }}</td>
 				<td align ="center">{{ $ccf->ccf_num_exam }}</td>
 				<td align ="center">
-					<form action="{{ route('course_config.destroy',$ccf->ccf_crs_code) }}" method="POST" >
+
+				<form action="{{ route('course_config.destroy',['ccf_year'=>$ccf->ccf_year,'ccf_term'=>$ccf->ccf_term,'ccf_crs_code'=>$ccf->ccf_crs_code]  ) }}" method="POST" >
 						<a class="btn btn-primary" href="{{ route('course_config.edit',$ccf->ccf_crs_code) }}"> Edit</a>
 						@csrf
 						@method('DELETE')

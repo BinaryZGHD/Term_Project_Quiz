@@ -32,8 +32,9 @@
 				<td align ="center">{{ $enr->enr_sect }}</td>
 				<td align ="center">{{ $enr->enr_seq }}</td>
 				<td align ="center">{{ $enr->std_name }}</td>
+
 				<td align ="center">
-					<form action="{{ route('enroll.destroy',$enr->enr_sect) }}" method="POST" >
+					<form action="{{ route('choice.destroy',['enr_std_code'=>$enr ->enr_std_code,'enr_crs_code'=>$enr ->enr_crs_code]  ) }}" method="POST" >	
 						<a class="btn btn-primary" href="{{ route('enroll.edit',$enr->enr_sect) }}"> Edit</a>
 						@csrf
 						@method('DELETE')

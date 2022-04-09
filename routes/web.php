@@ -13,19 +13,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 route::resource('homes','App\Http\Controllers\HomeController');
+
 route::resource('statuswork','App\Http\Controllers\STATUSController');
+
 route::resource('choice','App\Http\Controllers\ChoiceController');
 route::delete('choice.destroy/{ch_qs_id}/{ch_no}','App\Http\Controllers\ChoiceController@destroy')->name('choice.destroy');
+
 // route::delete('choice.destroy/{ch_qs_id}/{ch_no}','App\Http\Controllers\ChoiceController@destroy')->name('choice.destroy');
 route::resource('class_check','App\Http\Controllers\ClassCheckController');
+
 //route::delete('class_check.destroy/{ch_qs_id}/{ch_no}','App\Http\Controllers\ChoiceController@destroy')->name('choice.destroy');
+
 route::resource('course_config','App\Http\Controllers\CourseConfigController');
-//route::delete('choice.destroy/{ch_qs_id}/{ch_no}','App\Http\Controllers\ChoiceController@destroy')->name('choice.destroy');
+route::delete('course_config.destroy/{ccf_year}/{ccf_term}/{ccf_crs_code}','App\Http\Controllers\CourseConfigController@destroy')->name('course_config.destroy');
 route::resource('class_check_student','App\Http\Controllers\ClassCheckStudentController');
+
 route::delete('class_check_student.destroy/{ccs_cc_id}/{ccs_std_code}','App\Http\Controllers\ClassCheckStudentController@destroy')->name('classcheckstudent.destroy');
-route::delete('enroll.destroy/{enr_sect}/{enr_seq}','App\Http\Controllers\EnrollController@destroy')->name('enroll.destroy');//ยังทำส่ง2ตัวแปรไม่ได้
+
+route::delete('enroll.destroy/{enr_std_code}/{enr_crs_code}','App\Http\Controllers\EnrollController@destroy')->name('enroll.destroy');//ยังทำส่ง2ตัวแปรไม่ได้
+
 route::resource('elle','App\Http\Controllers\StatusQuiz3Controller');
+
 route::resource('quiz3','App\Http\Controllers\Quiz3Controller');
+
+
+
+
+
+
+
+
+
+
+
 
 //  ยังไม่ทำ 
  //  ยังไม่ทำ 

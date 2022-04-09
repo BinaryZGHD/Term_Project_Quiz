@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+route::delete('course_config.destroy/{ccf_year}/{ccf_term}/{ccf_crs_code}','App\Http\Controllers\CourseConfigController@destroy')->name('course_config.destroy');
+
+
+
 route::resource('homes','App\Http\Controllers\HomeController');
 route::resource('statuswork','App\Http\Controllers\STATUSController');
 route::resource('choice','App\Http\Controllers\ChoiceController');
