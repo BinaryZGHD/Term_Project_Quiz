@@ -15,18 +15,20 @@
 	<div class="col-lg-12 margin-tb">
         <table class="table table-bordered">
 			<tr>
-				<td align ="center" >Choice_id</td>
-				<td align ="center" >Choice_number</td>
-				<td align ="center" >Choice_description</td>
+				<td align ="center" >ปีการศึกษา</td>
+				<td align ="center" >เทอม</td>
+				<td align ="center" >รายวิชา</td>
+				<td align ="center" >กลุ่ม</td>
+				<td align ="center" >อาจารย์</td>
 				<td align ="center" colspan=2>Operations</td>
 			</tr>
 			@foreach($teacherteach as $teat)
 			<tr>
 				<td align ="center">{{ $teat->tt_year }}</td>
 				<td align ="center" >{{ $teat->tt_term }}</td>
-				<td align ="center">{{ $teat->tt_crs_code }}</td>
+				<td align ="center">{{ $teat->crs_name }}</td>
 				<td align ="center" >{{ $teat->tt_sect }}</td>
-				<td align ="center">{{ $teat->tt_tch_code }}</td>
+				<td align ="center">{{ $teat->tch_name }}</td>
 				<td align ="center" >
 					<form action="{{ route('teacher_teach.destroy',$teat->tt_crs_code) }}" method="POST" >
 						<a class="btn btn-primary" href="{{ route('teacher_teach.edit',$teat->tt_crs_code) }}"> Edit</a>

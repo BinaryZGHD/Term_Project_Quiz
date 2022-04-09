@@ -18,9 +18,9 @@
   			text-align: center;
   			text-decoration: none;
   			display: inline-block;
-  			font-size: 16px;
+  			font-size: 14px;
   			margin: 4px 2px;
-			border-radius: 5%;
+			border-radius: 8px;
   			cursor: pointer;}
 </style>
 <div class="row">

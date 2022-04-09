@@ -14,8 +14,11 @@ class EnrollController extends Controller
      */
     public function index()
     {
-        $enroll = DB::table('enroll')->get();
-
+        $enroll = DB::table('enroll')
+                    ->join('course', 'enroll.enr_crs_code', '=', 'course.crs_code')
+                    ->join('student', 'enroll.enr_std_code', '=', 'student.std_code')
+                    ->orderby('enroll.enr_year', 'desc')
+                    ->get();
         return view('enroll.index',compact('enroll'));
     
     }
@@ -27,7 +30,11 @@ class EnrollController extends Controller
      */
     public function create()
     {
-        return view('enroll.create');
+        $student = DB::table('student')->get();
+        $course = DB::table('course')
+                    ->where('crs_Active', '=', 'Y')
+                    ->get();
+        return view('enroll.create',compact('student','course'));
     }
 
     /**

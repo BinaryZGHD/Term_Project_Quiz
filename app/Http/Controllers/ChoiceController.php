@@ -108,12 +108,11 @@ class ChoiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ch_qs_id , $ch_no)
     {
-        DB::table('choice')
-        ->where('ch_qs_id','=',$id)
-        ->where('ch_no','=',$id)
-        ->delete();
+        DB::table('choice') ->where('ch_qs_id','=',$ch_qs_id)
+                            ->where('ch_no','=',$ch_no)
+                            ->delete();
         
         return redirect('choice');
     }
