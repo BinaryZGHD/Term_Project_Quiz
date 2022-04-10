@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add classcheck</h2>
+            <h2>เพิ่มชั้นเรียน</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('class_check.index') }}"> Back</a>
@@ -29,52 +29,66 @@
          
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Class ID</strong>
-                <input type="text" name="cc_id" class="form-control" placeholder=" INT">
+                <strong>รหัสชั้นเรียน</strong>
+                <input type="text" name="cc_id" class="form-control" placeholder="รหัสชั้นเรียน">
             </div>
 
             <div class="form-group">
-                <strong>Year</strong>
-                <input type="text" name="cc_year" class="form-control" placeholder="Sting <= 4 ">
+                <strong>ปีการศึกษา</strong>
+                <input type="text" name="cc_year" class="form-control" placeholder="ปีการศึกษา">
             </div>
 
             <div class="form-group">
-                <strong>Term</strong>
-                <input type="text" name="cc_term" class="form-control" placeholder="Sting = 1">
+                <strong>เทอม</strong>
+                <select class="form-control" name="cc_term" id="cc_term">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="S">Summer</option>
+                </select>
             </div>
 
 
 
             <div class="form-group">
-                <strong>Stude Code</strong>
-                <input type="text" name="cc_crs_code" class="form-control" placeholder="Sting <= 10">
+                <strong>วิชา</strong>
+                <select class="form-control" id="cc_crs_code" name="cc_crs_code" require>
+                    @foreach ($course as $crs)
+                    <option value="{{ $crs->crs_code}}">{{ $crs->crs_code }}&nbsp;//&nbsp;{{ $crs->crs_name }}</option>
+                    @endforeach
+                </select>
+                <!-- <input type="text" name="cc_crs_code" class="form-control" placeholder="Sting <= 10"> -->
             </div>
 
             <div class="form-group">
-                <strong>Sect</strong>
-                <input type="text" name="cc_sect" class="form-control" placeholder="Sting <= 4">
+                <strong>กลุ่ม</strong>
+                <input type="text" name="cc_sect" class="form-control" placeholder="กลุ่ม">
             </div>
 
             <div class="form-group">
-                <strong>Date</strong>
+                <strong>วันที่</strong>
                 <input type="date" name="cc_date" class="form-control" placeholder="Date">
             </div>
 
 
 
             <div class="form-group">
-                <strong>Time</strong>
+                <strong>เวลา</strong>
                 <input type="time" name="cc_time" class="form-control" placeholder="Time">
             </div>
 
             <div class="form-group">
-                <strong>ExamTime</strong>
-                <input type="text" name="cc_ex_times" class="form-control" placeholder="Sting <= 20">
+                <strong>เวลาในการทำข้อสอบ(นาที)</strong>
+                <input type="number" name="cc_ex_times" class="form-control" min="1" placeholder="เวลาในการทำข้อสอบ">
             </div>
 
             <div class="form-group">
-                <strong>TeacherCode</strong>
-                <input type="text" name="cc_tch_code" class="form-control" placeholder="Sting <= 20">
+                <strong>อาจารย์</strong>
+                <select class="form-control" id="cc_tch_code" name="cc_tch_code" require>
+                    @foreach ($teacher as $tea)
+                    <option value="{{ $tea->tch_code}}">{{ $tea->tch_code }}&nbsp;//&nbsp;{{ $tea->tch_name }}</option>
+                    @endforeach
+                </select>
+                <!-- <input type="text" name="cc_tch_code" class="form-control" placeholder="Sting <= 20"> -->
             </div>
 
 

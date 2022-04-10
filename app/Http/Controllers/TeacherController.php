@@ -13,8 +13,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teacher =  DB::table('teacher')->get();
-
+        $teacher =  DB::table('teacher')
+                    ->join('faculty', 'teacher.tch_fac_code', '=', 'faculty.fac_code')
+                    ->get();
         return view('teacher.index',compact('teacher'));
     }
 
@@ -25,7 +26,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('teacher.create');
+        $faculty = DB::table('faculty')->get();
+        return view('teacher.create',compact('faculty'));
     }
 
     /**
@@ -39,21 +41,28 @@ class TeacherController extends Controller
         $request->validate([
             'tch_code'=>'required',
             'tch_name'=>'required',
-            'tch_email'=>'required',
-            'tch_fac_code'=>'required',
+            // 'tch_email'=>'required',
+            'tch_fac_code'=>'required' ,
             'tch_user_login'=>'required'
         ]);
-
+        DB::beginTransaction();
+        try {
         DB::table('teacher')->insert(
         [
             'tch_code' => $request->tch_code, 
             'tch_name' => $request->tch_name,
-            'tch_email'=> $request->tch_email,
+            // 'tch_email'=> $request->tch_email,
             'tch_fac_code' => $request->tch_fac_code,
             'tch_user_login'=> $request->tch_user_login
         ]
         );
+        DB::select('call GenerateTeacherEmail(?)',[$request->tch_code]);
+    }catch (ValidationException $e) {
+        DB::rollback();
+    }
+    DB::commit();
 
+    
         return redirect('teacher');
     }
 
@@ -77,7 +86,9 @@ class TeacherController extends Controller
     public function edit($id)
     {
        
-        $teacher = DB::table('teacher')->where('tch_code','=',$id)->get ();
+        $teacher = DB::table('teacher')
+                    ->join('faculty', 'teacher.tch_fac_code', '=', 'faculty.fac_code')
+                    ->where('tch_code','=',$id)->get ();
         return view('teacher.edit', compact('teacher'));
         
     }
@@ -117,12 +128,12 @@ class TeacherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($tch_code)
     {
         DB::table('teacher')
-        ->where('tch_code','=',$id)
+        ->where('tch_code','=',$tch_code)
         // ->where('tch_name','=',$id)
-        ->where('tch_user_login','=',$id)
+        //->where('tch_user_login','=',$id)
         ->delete();
         
         return redirect('teacher');

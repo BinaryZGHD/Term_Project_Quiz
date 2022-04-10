@@ -34,12 +34,12 @@
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Class ID</strong>
+                <strong>รหัสชั้นเรียน</strong>
                 <input type="text"  readonly value="{{ $claks->ccs_cc_id }}" name="ccs_cc_id" class="form-control" placeholder="รหัสตัวเลือก (INT)">
             </div>
 
             <div class="form-group">
-                <strong>Stude Code</strong>
+                <strong>รหัสนักศึกษา</strong>
                 <input type="text" value="{{ $claks->ccs_std_code }}" name="ccs_std_code" class="form-control" placeholder="เลขที่ตัวเลือก (INT)">
             </div>
             

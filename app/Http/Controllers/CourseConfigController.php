@@ -100,20 +100,35 @@ class CourseConfigController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // $request->validate([
+        //     'ccf_year'=>'required',
+        //     'ccf_term'=>'required',
+        //     'ccf_crs_code'=>'required',
+        //     'ccf_num_exam'=>'required'
+        // ]);
+        
+        // DB::table('course_config')->where('ccf_crs_code','=',$id)->update([
+        //     'ccf_year' => $request->ccf_year,
+        //     'ccf_term' => $request->ccf_term,
+        //     'ccf_crs_code' => $request->ccf_crs_code,
+        //     'ccf_num_exam' => $request->ccf_num_exam
+        // ]);
+        // return redirect('course_config');
         $request->validate([
             'ccf_year'=>'required',
             'ccf_term'=>'required',
             'ccf_crs_code'=>'required',
             'ccf_num_exam'=>'required'
         ]);
-    
-        DB::table('course_config')->where('ccf_crs_code','=',$id)->update([
-            'ccf_year' => $request->ccf_year,
-            'ccf_term' => $request->ccf_term,
-            'ccf_crs_code' => $request->ccf_crs_code,
-            'ccf_num_exam' => $request->ccf_num_exam
-        ]);
-        return redirect('course_config');
+        DB::beginTransaction();
+        try {
+        DB::select('call Edit_config(?,?,?,?)',[$request->ccf_year,$request->ccf_term,$request->ccf_crs_code,$request->ccf_num_exam]);
+        } catch(ValidationException $e)
+        {
+            DB::rollback();
+        }
+        DB::commit();
+
     }
 
     /**

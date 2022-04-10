@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add new  STATUS </h2>
+            <h2>เพิ่มสถานะใหม่ </h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('statuswork.index') }}"> Back</a>
@@ -38,22 +38,22 @@
                 <input type="date" name="update_at" class="form-control" placeholder="2022-03-19 00:00:00">
             </div> -->
             <div class="form-group">
-                <strong>TIME</strong>
-                <input type="time" name="TIME" class="form-control" placeholder="TIME">
+                <strong>เวลา</strong>
+                <input type="time" name="TIME" class="form-control" placeholder="เวลา">
             </div>
 
             <div class="form-group">
-                <strong>AMIN ID</strong>
-                <input type="text" name="ADMIN" class="form-control" placeholder="ID ADMIN">
+                <strong>รหัสผู้ดูแล</strong>
+                <input type="text" name="ADMIN" class="form-control" placeholder="รหัสผู้ดูแล">
             </div>
 
             <div class="form-group">
-                <strong>NUMEDIT</strong>
+                <strong>จำนวนการแก้ไข</strong>
                 <input type="text" name="NUMEDIT" class="form-control" placeholder="จำนวนครั้งที่ระบุรายละเอียด +1 ของตัวเองทุกครั้งที่เพิ่ม">
             </div>
 
             <div class="form-group">
-                <strong>DETAIL</strong>
+                <strong>รายละเอียด</strong>
                 <input type="text" name="DETAIL" class="form-control" placeholder="รายละเอียด">
             </div>
            

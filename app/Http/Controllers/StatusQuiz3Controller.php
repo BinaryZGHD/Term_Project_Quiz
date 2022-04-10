@@ -39,8 +39,9 @@ class StatusQuiz3Controller extends Controller
                  
                     // ->leftJoin('Products','choice.ProdNo','=','Products.ProdNo')
                     ->get();
-
-        return view('elle.index2',compact('quiz3','quiz32'));
+        
+        $quiz39 = DB::table('choice')->get();
+        return view('elle.index2',compact('quiz3','quiz32','quiz39'));
     }
 
     /**

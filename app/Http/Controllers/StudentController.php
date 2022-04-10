@@ -13,7 +13,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $student =  DB::table('student')->get();
+        $student =  DB::table('student')
+                    ->join('faculty', 'student.std_fac_code', '=', 'faculty.fac_code')
+                    ->get();
 
         return view('student.index',compact('student'));
     }
@@ -25,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('student.create');
+        $faculty = DB::table('faculty')->get();
+        return view('student.create',compact('faculty'));
     }
 
     /**
@@ -39,22 +42,27 @@ class StudentController extends Controller
         $request->validate([
             'std_code'=>'required',
             'std_name'=>'required',
-            'std_email'=>'required',
+            // 'std_email'=>'required',
             'std_fac_code'=>'required',
             'std_user_login'=>'required'
         ]);
-
+    DB::beginTransaction();
+    try {
         DB::table('student')->insert(
         [
             'std_code' => $request->std_code, 
             'std_name' => $request->std_name,
-            'std_email'=> $request->std_email,
+            // 'std_email'=> $request->std_email,
             'std_fac_code' => $request->std_fac_code,
             'std_user_login'=> $request->std_user_login
         ]
         );
-
-        return redirect('student');
+        DB::select('call GenerateStudentEmail(?)',[$request->std_code]);
+    }catch (ValidationException $e) {
+        DB::rollback();
+    }
+    DB::commit();
+    return redirect('student');
     }
 
     /**
@@ -77,8 +85,11 @@ class StudentController extends Controller
     public function edit($id)
     {
        
-        $student = DB::table('student')->where('std_code','=',$id)->get ();
-        return view('student.edit', compact('student'));
+        $student = DB::table('student')
+                    ->join('faculty', 'student.std_fac_code', '=', 'faculty.fac_code')  
+                    ->where('std_code','=',$id)->get ();
+        $faculty = DB::table('faculty')->get();
+        return view('student.edit', compact('student','faculty'));
         
     }
 

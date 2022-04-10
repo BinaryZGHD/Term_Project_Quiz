@@ -36,10 +36,10 @@
                         ?>
                         <li style="list-style: none;"><input name = "choice{$qui->ch_no}" type="radio" value="$i"> {!! $qui->ch_desc !!} </li>
                         <?php 
-                        $name = "choice{$qui->ch_no}";
-                        print_r($qui->ch_no);
-                        print("<br>");
-                        print_r($name);
+                        // $name = "choice{$qui->ch_no}";
+                        // print_r($qui->ch_no);
+                        // print("<br>");
+                        // print_r($name);
                         ?>
                         @endforeach
                 </div>

@@ -2,13 +2,14 @@
   
 @section('content')
 <div class="row">
+    <br>
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Edit teacher</h2>
+            <h2>แก้ไขรายชื่ออาจารย์ผู้สอน</h2>
         </div>
-        <div class="pull-right">
+        <!-- <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('teacher.index') }}"> Back</a>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -32,40 +33,46 @@
     @endif   
     </div>   
 
-     <div class="row">
+    <div class="row">
+        <br>
         <div class="col-xs-12 col-sm-12 col-md-12">
        
 
             <div class="form-group">
-                <strong>tch_code</strong>
-                <input type="text" readonly  value="{{ $tea->tch_code}}"name="tch_code" class="form-control" placeholder="Char(4)">
+                <strong>รหัสอาจารย์</strong>
+                <input type="text" readonly  value="{{ $tea->tch_code}}"name="tch_code" class="form-control" placeholder="รหัสอาจารย์">
             </div>
 
             <div class="form-group">
-                <strong>tch_name</strong>
-                <input type="text"   value="{{ $tea->tch_name}}"name="tch_name" class="form-control" placeholder="Char(1)">
+                <strong>ชื่ออาจารย์</strong>
+                <input type="text"   value="{{ $tea->tch_name}}"name="tch_name" class="form-control" placeholder="ชื่ออาจารย์">
             </div>
 
             <div class="form-group">
-                <strong>tch_email</strong>
-                <input type="text"   value="{{ $tea->tch_email}}"name="tch_email" class="form-control" placeholder="vaChar(10)">
+                <strong>อีเมล</strong>
+                <input type="text"   value="{{ $tea->tch_email}}"name="tch_email" class="form-control" placeholder="อีเมลล์">
             </div>
             <div class="form-group">
-                <strong>tch_fac_code</strong>
-                <input type="text"   value="{{ $tea->tch_fac_code}}"name="tch_fac_code" class="form-control" placeholder="vaChar(4)">
+                <strong>คณะที่สังกัด</strong>
+                <select class="form-control" name="tch_fac_code" id="tch_fac_code" readonly>
+                    <option value="{{$tea->tch_fac_code}}">{{$tea->fac_name}}</option>
+                </select>
             </div>
 
             <div class="form-group">
-                <strong>tch_user_login</strong>
-                <input type="text"   value="{{ $tea->tch_user_login}}" name="tch_user_login" class="form-control" placeholder="Char(20)">
+                <strong>ผู้ใช้งาน</strong>
+                <input type="text"   value="{{ $tea->tch_user_login}}" name="tch_user_login" class="form-control" placeholder="ผู้ใช้งาน">
             </div>
 
         
            
             <div class="card-footer ml-auto mr-auto" align=center>
-                <button type="reset" class="btn btn-danger">ยกเลิก</button>
-                <button type="submit" class="btn btn-primary">แก้ไข</button> 
-            </div>                                                                    
+                 <div class="pull-center">
+                    <a class="btn btn-primary" href="{{ route('teacher.index') }}"> ย้อนกลับ</a>
+                    <button type="reset" class="btn btn-warning">คืนค่า</button>
+                    <button type="submit" class="btn btn-success">บันทึก</button> 
+                </div>
+            </div>                                                                         
         </div>
      </div>
 </form>

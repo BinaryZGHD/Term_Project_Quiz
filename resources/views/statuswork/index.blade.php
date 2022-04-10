@@ -24,7 +24,7 @@ a     {color: #FF0000;}
 <div class="row">
 	<div class="col-lg-12 margin-tb">
 		<div class="pull-left">
-			<h2>Show statuswork</h2>
+			<h2>แสดงสถานะการทำงาน</h2>
 			| <a href="http://dekwat.buu.in.th:15110/choice" > choice </a>
 			| <a href="http://dekwat.buu.in.th:15110/class_check" > class_check </a>
 			| <a href="http://dekwat.buu.in.th:15110/course_config" > course_config </a>
@@ -32,13 +32,18 @@ a     {color: #FF0000;}
 			| <a href="http://dekwat.buu.in.th:15110/course" > course </a>
 			| <a href="http://dekwat.buu.in.th:15110/enroll" > enroll </a>
 			| <a href="http://dekwat.buu.in.th:15110/exam" > exam </a>
-			| <a href="http://dekwat.buu.in.th:15110/exam_control" > exam_control </a> <br>
+			| <a href="http://dekwat.buu.in.th:15110/exam_control" > exam_control </a> | 
+			<br> 
 			| <a href="http://dekwat.buu.in.th:15110/exam_question" > exam_question </a>
 			| <a href="http://dekwat.buu.in.th:15110/faculty" > faculty </a>
 			| <a href="http://dekwat.buu.in.th:15110/question" > question </a>
 			| <a href="http://dekwat.buu.in.th:15110/student" > student </a>
 			| <a href="http://dekwat.buu.in.th:15110/teacher" > teacher </a>
-			| <a href="http://dekwat.buu.in.th:15110/teacher_teach" > teacher_teach </a>
+			| <a href="http://dekwat.buu.in.th:15110/teacher_teach" > teacher_teach </a>|
+			<br>
+			| <a href="http://dekwat.buu.in.th:15110/" > HOME Welcome </a> 
+			| <a href="http://dekwat.buu.in.th:15110/elle" > EllE </a> 
+			| <a href="http://dekwat.buu.in.th:15110/quiz3" > Quiz 3 </a> 
 			| <a href="http://dekwat.buu.in.th:15111/" > PHP My Admin </a> |
             <div class="card-header">
 				<a class="btn btn-primary" 
@@ -52,12 +57,12 @@ a     {color: #FF0000;}
         <table class="table table-bordered">
 			<tr>
 				<!-- <td align ="center" >created_at</td> -->
-				<td align ="center" >update_at</td>
-				<td align ="center" >TIME</td>
-				<td align ="center" >ADMIN ID</td>
-				<td align ="center" >NUMEDIT</td>
-				<td align ="center" >DETAIL</td>
-				<td colspan=2>Operrations</td>
+				<td align ="center" >อัพเดต</td>
+				<td align ="center" >เวลา</td>
+				<td align ="center" >รหัสผู้ดูแล</td>
+				<td align ="center" >จำนวนการแก้ไข</td>
+				<td align ="center" >รายละเอียด</td>
+				<td colspan=2>เครื่องมือ</td>
 			</tr>
 			@foreach($statuswork as $stw)
 			<tr>

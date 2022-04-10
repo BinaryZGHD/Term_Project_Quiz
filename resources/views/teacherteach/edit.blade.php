@@ -2,13 +2,14 @@
   
 @section('content')
 <div class="row">
+    <br>
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Edit teacherteach</h2>
+            <h2>แก้ไขรายการสอนของอาจารย์</h2>
         </div>
-        <div class="pull-right">
+        <!-- <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('teacher_teach.index') }}"> Back</a>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -33,39 +34,43 @@
     </div>   
 
      <div class="row">
+         <br>
         <div class="col-xs-12 col-sm-12 col-md-12">
        
 
             <div class="form-group">
-                <strong>tt_year</strong>
-                <input type="text" readonly  value="{{ $teat->tt_year}}"name="tt_year" class="form-control" placeholder="Char(4)">
+                <strong>ปีการศึกษา</strong>
+                <input type="text"   value="{{ $teat->tt_year}}"name="tt_year" class="form-control" placeholder="ปีการศึกษา">
             </div>
 
             <div class="form-group">
-                <strong>tt_term</strong>
-                <input type="text"   value="{{ $teat->tt_term}}"name="tt_term" class="form-control" placeholder="Char(1)">
+                <strong>ภาคเรียน</strong>
+                <input type="text"   value="{{ $teat->tt_term}}"name="tt_term" class="form-control" placeholder="ภาคเรียน">
             </div>
 
             <div class="form-group">
-                <strong>tt_crs_code</strong>
-                <input type="text"   value="{{ $teat->tt_crs_code}}"name="tt_crs_code" class="form-control" placeholder="vaChar(10)">
+                <strong>รหัสรายวิชา</strong>
+                <input type="text" readonly  value="{{ $teat->tt_crs_code}}"name="tt_crs_code" class="form-control" placeholder="รหัสรายวิชา">
             </div>
             <div class="form-group">
-                <strong>tt_sect</strong>
-                <input type="text"   value="{{ $teat->tt_sect}}"name="tt_sect" class="form-control" placeholder="vaChar(4)">
+                <strong>กลุ่ม</strong>
+                <input type="text"   value="{{ $teat->tt_sect}}"name="tt_sect" class="form-control" placeholder="กลุ่ม">
             </div>
 
             <div class="form-group">
-                <strong>tt_tch_code</strong>
-                <input type="text"   value="{{ $teat->tt_tch_code}}" name="tt_tch_code" class="form-control" placeholder="Char(20)">
+                <strong>รหัสอาจารย์</strong>
+                <input type="text" readonly  value="{{ $teat->tt_tch_code}}" name="tt_tch_code" class="form-control" placeholder="รหัสอาจารย์">
             </div>
 
         
            
             <div class="card-footer ml-auto mr-auto" align=center>
-                <button type="reset" class="btn btn-danger">ยกเลิก</button>
-                <button type="submit" class="btn btn-primary">แก้ไข</button> 
-            </div>                                                                    
+                 <div class="pull-center">
+                    <a class="btn btn-primary" href="{{ route('teacher_teach.index') }}"> ย้อนกลับ</a>
+                    <button type="reset" class="btn btn-warning">คืนค่า</button>
+                    <button type="submit" class="btn btn-success">บันทึก</button> 
+                </div>
+            </div>                                                                          
         </div>
      </div>
 </form>

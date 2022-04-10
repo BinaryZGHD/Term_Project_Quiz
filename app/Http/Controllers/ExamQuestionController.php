@@ -25,7 +25,9 @@ class ExamQuestionController extends Controller
      */
     public function create()
     {
-        return view('examquestion.create');
+        $question = DB::table('question')
+                            ->get();
+        return view('examquestion.create',compact('question'));
     }
 
     /**

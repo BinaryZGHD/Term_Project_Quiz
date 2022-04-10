@@ -13,7 +13,9 @@ class ClassCheckStudentController extends Controller
      */
     public function index()
     {
-        $classcheckstudent = DB::table('class_check_student')->get();
+        $classcheckstudent = DB::table('class_check_student')
+                                ->join('student','class_check_student.ccs_std_code','=','student.std_code')
+                                ->get();
 
         return view('classcheckstudent.index',compact('classcheckstudent'));
     }
@@ -25,7 +27,8 @@ class ClassCheckStudentController extends Controller
      */
     public function create()
     {
-        return view('classcheckstudent.create');
+        $student = DB::table('student')->get();
+        return view('classcheckstudent.create',compact('student'));
     }
 
     /**
@@ -72,7 +75,8 @@ class ClassCheckStudentController extends Controller
     public function edit($id)
     {
        
-        $classcheckstudent = DB::table('class_check_student')->where('ccs_cc_id','=',$id)->get ();
+        $classcheckstudent = DB::table('class_check_student')
+                                ->where('ccs_cc_id','=',$id)->get ();
         return view('classcheckstudent.edit', compact('classcheckstudent'));
         
     }
@@ -107,11 +111,11 @@ class ClassCheckStudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ccs_cc_id,$ccs_std_code)
     {
         DB::table('class_check_student')
-        ->where('ccs_cc_id','=',$id)
-        ->where('ccs_std_code','=',$id)
+        ->where('ccs_cc_id','=',$ccs_cc_id)
+        ->where('ccs_std_code','=',$ccs_std_code)
         ->delete();
         
         return redirect('class_check_student');

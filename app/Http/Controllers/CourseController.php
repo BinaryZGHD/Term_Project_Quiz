@@ -109,12 +109,11 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($crs_code,$crs_active)
     {
         DB::table('course')
-        ->where('crs_code','=',$id)
-        ->where('crs_name','=',$id)
-        ->where('crs_active','=',$id)
+            ->where('crs_code','=',$crs_code)
+            ->where('crs_active','=',$crs_active)
         ->delete();
         
         return redirect('course');

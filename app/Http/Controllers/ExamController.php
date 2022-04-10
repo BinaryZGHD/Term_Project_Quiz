@@ -14,7 +14,11 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exam = DB::table('exam')->get();
+        $exam = DB::table('exam')
+                    ->join('course', 'exam.ex_crs_code', '=', 'course.crs_code')
+                    ->join('student', 'exam.ex_std_code', '=', 'student.std_code')
+                    ->orderby('exam.ex_id', 'desc')
+                    ->get();
 
         return view('exam.index',compact('exam'));
     
@@ -27,7 +31,11 @@ class ExamController extends Controller
      */
     public function create()
     {
-        return view('exam.create');
+        $student = DB::table('student')->get();
+        $course = DB::table('course')
+                    // ->where('crs_Active', '=', 'Y')
+                    ->get();
+        return view('exam.create',compact('student','course'));
     }
 
     /**
@@ -86,7 +94,10 @@ class ExamController extends Controller
      */
     public function edit($id)
     {
-        $exam = DB::table('exam')->where('ex_id','=',$id)->get ();
+        $exam = DB::table('exam')
+                    ->join('course', 'exam.ex_crs_code', '=', 'course.crs_code')
+                    ->join('student', 'exam.ex_std_code', '=', 'student.std_code')
+                    ->where('ex_id','=',$id)->get ();
         return view('exam.edit', compact('exam'));
     }
 

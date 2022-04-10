@@ -87,7 +87,11 @@ class EnrollController extends Controller
      */
     public function edit($id)
     {
-        $enroll = DB::table('enroll')->where('enr_seq','=',$id)->get ();
+        $enroll = DB::table('enroll')
+                    ->join('course', 'enroll.enr_crs_code', '=', 'course.crs_code')
+                    ->join('student', 'enroll.enr_std_code', '=', 'student.std_code')
+                    ->where('enr_std_code','=',$id)
+                    ->get ();
         return view('enroll.edit', compact('enroll'));
     }
 
@@ -109,7 +113,7 @@ class EnrollController extends Controller
             'enr_std_code'=>'required'
         ]);
     
-        DB::table('enroll')->where('enr_sect','=',$id)->update([
+        DB::table('enroll')->where('enr_std_code','=',$id)->update([
             'enr_year' => $request->enr_year,
             'enr_term' => $request->enr_term,
             'enr_crs_code' => $request->enr_crs_code,

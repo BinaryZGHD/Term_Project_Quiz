@@ -14,7 +14,9 @@ class ChoiceController extends Controller
      */
     public function index()
     {
-        $choice = DB::table('choice')->get();
+        $choice = DB::table('choice')
+                    ->join('question','question.qs_id','=','choice.ch_qs_id')
+                    ->get();
 
         return view('choice.index',compact('choice'));
     }

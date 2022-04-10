@@ -1,9 +1,10 @@
 @extends('layout')
 @section('content')
 <div class="row">
+	<br>
 	<div class="col-lg-12 margin-tb">
 		<div class="pull-left">
-			<h2>Show Enroll  | | <a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
+			<h2>แสดงการลงทะเบียน  | | <a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
             <div class="card-header">
 				<a class="btn btn-primary" 
                     href="{{ route('enroll.create') }}">Insert</a>
@@ -22,7 +23,7 @@
 				<td align ="center">เลขที่</td>
 				<!-- เลขที่รึเปล่านะ -->
 				<td align ="center">ชื่อนักศึกษา</td>
-				<td align ="center" colspan=2>Operations</td>
+				<td align ="center" colspan=2>เครื่องมือ</td>
 			</tr>
 			@foreach($enroll as $enr)
 			<tr>
@@ -32,10 +33,9 @@
 				<td align ="center">{{ $enr->enr_sect }}</td>
 				<td align ="center">{{ $enr->enr_seq }}</td>
 				<td align ="center">{{ $enr->std_name }}</td>
-
 				<td align ="center">
-					<form action="{{ route('choice.destroy',['enr_std_code'=>$enr ->enr_std_code,'enr_crs_code'=>$enr ->enr_crs_code]  ) }}" method="POST" >	
-						<a class="btn btn-primary" href="{{ route('enroll.edit',$enr->enr_sect) }}"> Edit</a>
+					<form action="{{ route('enroll.destroy',['enr_std_code'=>$enr->enr_std_code,'enr_crs_code'=>$enr->enr_crs_code] ) }}" method="POST" >
+						<a class="btn btn-primary" href="{{ route('enroll.edit',$enr->enr_std_code) }}"> Edit</a>
 						@csrf
 						@method('DELETE')
 						<button type="submit" class="btn btn-danger">Delete</button>

@@ -28,19 +28,10 @@
                             </tr>
                         </table>
                         @foreach($quiz32 as $qui)
-                        <?php
-                        $quiz32 = DB::table("question")
-                        ->where('question.qs_id','=',$id ?? '')
-                        ->leftJoin('choice','question.qs_id','=','choice.ch_qs_id')
-                        ->get();
-                        ?>
+                        h4> {{ $qui->qs_question }}
+                                    </h4>
                         <li style="list-style: none;"><input name = "choice{$qui->ch_no}" type="radio" value="$i"> {!! $qui->ch_desc !!} </li>
-                        <?php 
-                        $name = "choice{$qui->ch_no}";
-                        print_r($qui->ch_no);
-                        print("<br>");
-                        print_r($name);
-                        ?>
+                       
                         @endforeach
                 </div>
                 <div class ="thumbnail">

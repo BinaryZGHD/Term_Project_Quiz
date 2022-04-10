@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add Course Config</h2>
+            <h2>เพิ่มการกำหนดค่าหลักสูตร</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('course_config.index') }}"> Back</a>
@@ -31,8 +31,22 @@
     
             <div class="form-group">
                 <strong>ปีที่แก้ไขรายวิชา</strong>
-                <input type="number" name="ccf_year" class="form-control" required  min="2555" max="2575" placeholder="ปีที่แก้ไขรายวิชา (2555 - 2575)">
+                <!-- <input type="number" name="ccf_year" class="form-control" required  min="2555" max="2575" placeholder="ปีที่แก้ไขรายวิชา (2555 - 2575)"> -->
+                <select class="form-control" id="ccf_year" name="ccf_year" require placeholder="ปีที่แก้ไขรายวิชา (2555 - 2575)">
+                    <option value="2565">2565</option>
+                    <option value="2566">2566</option>
+                    <option value="2567">2567</option>
+                    <option value="2568">2568</option>
+                    <option value="2569">2569</option>
+                    <option value="2570">2570</option>
+                    <option value="2571">2571</option>
+                    <option value="2572">2572</option>
+                    <option value="2573">2573</option>
+                    <option value="2574">2574</option>
+                    <option value="2575">2575</option>
+                </select>
             </div>
+            
             <div class="form-group">
                 <strong>เทอมที่แก้ไขรายวิชา</strong>
                 <select class="form-control" id="ccf_term" name="ccf_term" require>
@@ -41,17 +55,17 @@
                     <option value="S">S</option>
                 </select>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <strong>รหัสวิชาที่แก้ไข</strong>
-                <select class="form-control" id="ccf_crs_code" name="ccf_crs_code" require>
+                <select class="form-control" id="enr_crs_code" name="enr_crs_code" require>
                     @foreach ($course_config as $crsf)
                     <option value="{{ $crsf->ccf_crs_code}}">{{ $crsf->ccf_crs_code }}</option>
                     @endforeach
                 </select>
-            </div>
+            </div> -->
             <div class="form-group">
                 <strong>รหัสวิชาที่ลงทะเบียน</strong>
-                <select class="form-control" id="enr_crs_code" name="enr_crs_code" require>
+                <select class="form-control" id="ccf_crs_code" name="ccf_crs_code" require>
                     @foreach ($course as $crs)
                     <option value="{{ $crs->crs_code}}">{{ $crs->crs_code }}&nbsp;//&nbsp;{{ $crs->crs_name }}</option>
                     @endforeach

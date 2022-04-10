@@ -1,9 +1,10 @@
 @extends('layout')
 @section('content')
 <div class="row">
+	<br>
 	<div class="col-lg-12 margin-tb">
 		<div class="pull-left">
-			<h2>Show Question| | <a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
+			<h2>แสดงคำถาม| | <a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
             <div class="card-header">
 				<a class="btn btn-primary" 
                     href="{{ route('question.create') }}">Insert</a>
@@ -15,17 +16,15 @@
 	<div class="col-lg-12 margin-tb">
         <table class="table table-bordered">
 			<tr>
-				<td align ="center" >qs_id</td>
-				<td align ="center" >qs_question</td>
-				<td align ="center" >qs_ch_no_ans</td>
-
-				<td align ="center" >qs_ex_time</td>
-				<td align ="center" >qs_score</td>
-				<td align ="center" >qs_crs_code</td>
-
-				<td align ="center" >qs_tch_code</td>
-				<td align ="center" >qs_ex_date</td>
-				<td align ="center" colspan=2>Operations</td>
+				<td align ="center" >ข้อ</td>
+				<td align ="center" >คำถาม</td>
+				<td align ="center" >ข้อถูก</td>
+				<td align ="center" >ระยะเวลาในการทำ</td>
+				<td align ="center" >คะแนน</td>
+				<td align ="center" >วิชา</td>
+				<td align ="center" >อาจารย์</td>
+				<td align ="center" >วันที่ทำข้อสอบ</td>
+				<td align ="center" colspan=2>เครื่องมือ</td>
 			</tr>
 			@foreach($question as $qui)
 			<tr>
@@ -33,10 +32,9 @@
 				<td align ="center" >{{ $qui->qs_question }}</td>
 				<td align ="center">{{ $qui->qs_ch_no_ans }}</td>
 				<td align ="center" >{{ $qui->qs_ex_time }}</td>
-
 				<td align ="center">{{ $qui->qs_score }}</td>
-				<td align ="center" >{{ $qui->qs_crs_code }}</td>
-				<td align ="center">{{ $qui->qs_tch_code }}</td>
+				<td align ="center" >{{ $qui->crs_name }}</td>
+				<td align ="center">{{ $qui->tch_name }}</td>
 				<td align ="center" >{{ $qui->qs_ex_date }}</td>
 				
 

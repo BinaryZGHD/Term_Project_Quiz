@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-12 margin-tb">
 		<div class="pull-left">
-			<h2>Show Class Check Student  | | <a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
+			<h2>แสดงชั้นตรวจนักศึกษา  | | <a href="http://dekwat.buu.in.th:15110/statuswork" > STATUS </a></h2>
             <div class="card-header">
 				<a class="btn btn-primary" 
                     href="{{ route('class_check_student.create') }}">Insert</a>
@@ -15,15 +15,15 @@
 	<div class="col-lg-12 margin-tb">
         <table class="table table-bordered">
 			<tr>
-				<td align ="center" >Choice_ID</td>
-				<td align ="center" >Student Code</td>
-				<td align ="center" colspan=2>Operations</td>
+				<td align ="center" >รหัสชั้นเรียน</td>
+				<td align ="center" >นักศึกษา</td>
+				<td align ="center" colspan=2>จัดการ</td>
 
 			</tr>
 			@foreach($classcheckstudent as $claks)
 			<tr>
 				<td align ="center">{{ $claks->ccs_cc_id }}</td>
-				<td align ="center" >{{ $claks->ccs_std_code }}</td>
+				<td align ="center" >{{ $claks->std_name }}</td>
 				
 
 

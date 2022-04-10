@@ -2,13 +2,14 @@
   
 @section('content')
 <div class="row">
+    <br>
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Add Teacher</h2>
+            <h2>เพิ่มรายชื่ออาจารย์ผู้สอน</h2>
         </div>
-        <div class="pull-right">
+        <!-- <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('teacher.index') }}"> Back</a>
-        </div>
+        </div> -->
     </div>
 </div>
    
@@ -28,33 +29,40 @@
     </div> 
          
         <div class="col-xs-12 col-sm-12 col-md-12">
+            
             <div class="form-group">
-                <strong>tch_code</strong>
-                <input type="text" name="tch_code" class="form-control" placeholder="vaChar(20)">
+                <strong>รหัสอาจารย์</strong>
+                <input type="text" name="tch_code" class="form-control" placeholder="รหัสอาจารย์">
             </div>
 
             <div class="form-group">
-                <strong>tch_name</strong>
-                <input type="text" name="tch_name" class="form-control" placeholder="vaChar(45)">
+                <strong>ชื่ออาจารย์</strong>
+                <input type="text" name="tch_name" class="form-control" placeholder="ชื่ออาจารย์">
             </div>
 
+            <!-- <div class="form-group">
+                <strong>อีเมลล์</strong>
+                <input type="text" name="tch_email" class="form-control" placeholder="อีเมลล์(45)">
+            </div> -->
             <div class="form-group">
-                <strong>tch_email</strong>
-                <input type="text" name="tch_email" class="form-control" placeholder="vaChar(45)">
+                <strong>คณะที่สังกัด</strong>
+                <select class="form-control" id="tch_fac_code" name="tch_fac_code">
+                    @foreach($faculty as $fac)
+                    <option value="{{ $fac->fac_code }}">{{$fac->fac_name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
-                <strong>tch_fac_code</strong>
-                <input type="text" name="tch_fac_code" class="form-control" placeholder="vaChar(3)">
-            </div>
-
-            <div class="form-group">
-                <strong>tch_user_login</strong>
-                <input type="text" name="tch_user_login" class="form-control" placeholder="Char(20)">
+                <strong>ผู้ใช้งาน</strong>
+                <input type="text" name="tch_user_login" class="form-control" placeholder="ผู้ใช้งาน">
             </div>
             <div class="card-footer ml-auto mr-auto" align=center>
-                <button type="reset" class="btn btn-danger">ยกเลิก</button>
-                <button type="submit" class="btn btn-primary">บันทึก</button> 
-            </div>                                                                    
+                 <div class="pull-center">
+                    <a class="btn btn-primary" href="{{ route('teacher.index') }}"> ย้อนกลับ</a>
+                    <button type="reset" class="btn btn-warning">คืนค่า</button>
+                    <button type="submit" class="btn btn-success">บันทึก</button> 
+                </div>
+            </div>                                                                       
         </div>
      </div>
 </form>

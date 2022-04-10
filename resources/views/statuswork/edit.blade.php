@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Edit STAUS</h2>
+            <h2>แก้ไขสถานะ</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('statuswork.index') }}"> Back</a>
@@ -35,31 +35,31 @@
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-                <strong>created_at</strong>
-                <input type="text" readonly  value="{{ $stw->created_at}}" name="created_at" class="form-control" placeholder="created_at">
+                <strong>สร้าง</strong>
+                <input type="text" readonly  value="{{ $stw->created_at}}" name="created_at" class="form-control" placeholder="สร้าง">
             </div>
 
             <div class="form-group">
-                <strong>update_at</strong>
-                <input type="text" readonly value="{{ $stw->update_at }}" name="update_at" class="form-control" placeholder="update_at">
+                <strong>อัพเดต</strong>
+                <input type="text" readonly value="{{ $stw->update_at }}" name="update_at" class="form-control" placeholder="อัพเดต">
             </div>
             <div class="form-group">
-                <strong>TIME</strong>
-                <input type="time" value="{{$stw->TIME }}" name="TIME" class="form-control" placeholder="TIME">
-            </div>
-
-            <div class="form-group">
-                <strong>ADMIN</strong>
-                <input type="text" value="{{$stw->ADMIN }}" name="ADMIN" class="form-control" placeholder="ADMIN">
-            </div>
-            <div class="form-group">
-                <strong>NUMEDIT</strong>
-                <input type="text" value="{{ $stw->NUMEDIT }}" name="NUMEDIT" class="form-control" placeholder="NUMEDIT">
+                <strong>เวลา</strong>
+                <input type="time" value="{{$stw->TIME }}" name="TIME" class="form-control" placeholder="เวลา">
             </div>
 
             <div class="form-group">
-                <strong>DETAIL</strong>
-                <input type="text" value="{{$stw->DETAIL }}" name="DETAIL" class="form-control" placeholder="DETAIL">
+                <strong>ผู้ดูแล</strong>
+                <input type="text" value="{{$stw->ADMIN }}" name="ADMIN" class="form-control" placeholder="ผู้ดูแล">
+            </div>
+            <div class="form-group">
+                <strong>จำนวนการแก้ไข</strong>
+                <input type="text" value="{{ $stw->NUMEDIT }}" name="NUMEDIT" class="form-control" placeholder="จำนวนการแก้ไข">
+            </div>
+
+            <div class="form-group">
+                <strong>รายละเอียด</strong>
+                <input type="text" value="{{$stw->DETAIL }}" name="DETAIL" class="form-control" placeholder="รายละเอียด">
             </div>
 
         

@@ -34,11 +34,11 @@
 	<div class="col-lg-12 margin-tb">
         <table class="table table-bordered">
 			<tr>
-				<th align ="center">Question_id</th>
+				<th align ="center">ลำดับคำถาม</th>
 				<!-- <td align ="center">Question</td> -->
-				<th align ="center">Time</th>
-                <th align ="center">Score</th>
-				<th align ="center" colspan=2>Operations</th>
+				<th align ="center">เวลา</th>
+                <th align ="center">คะแนน</th>
+				<th align ="center" colspan=2>เครื่องมือ</th>
 			</tr>
 			@foreach($quiz3 as $qu)
 			<tr>

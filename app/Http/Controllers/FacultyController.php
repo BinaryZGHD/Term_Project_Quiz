@@ -109,7 +109,6 @@ class FacultyController extends Controller
     {
         DB::table('faculty')
         ->where('fac_code','=',$id)
-        ->where('fac_name','=',$id)
         ->delete();
         
         return redirect('faculty');
